@@ -1,0 +1,39 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.upload-container {
+  border: solid 1px #ccc;
+  padding: 10px;
+  max-width: fit-content;
+  margin-bottom: 10px
+}
+
+#file-picker,
+#upl{
+    display: inline-block;
+    vertical-align: top;
+}
+
+h1, h2 {
+  font-family: Lato;
+}
+
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@import url('http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css');
+@import url('http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css');
+
+.thumbnailcontainer
+{
+    height: 40rem;    
+    width: 20rem;
+}
