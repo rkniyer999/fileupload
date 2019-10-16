@@ -1,0 +1,112 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<div id="app">
+</div>
+<div class="container">
+  <span><h1 align="center"> Train Forms </h1></span>
+<form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+   <div class="form-group">
+    <label for="exampleInputEmail1">Template Name </label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter template name">
+  </div>
+   <div class="form-group">
+     <p></p>
+      <p></p>
+      <p></p>
+    <label for="exampleInputFile">File input</label>
+      <p></p>
+      <p></p>
+    <div class="col-sm-12 text-center">
+    <input type="file" class="form-control-file "  
+    id="file-picker" aria-describedby="fileHelp" name="image" align="left">
+    <input class="btn btn-primary" type="submit" value="Upload" id="upl">
+      </div>
+      <p></p>
+      <p></p>
+      <br><br>
+    <div class="thumbnail">
+     <ul style="list-style: none"><li>
+        {{#each this.thumbnails}}   <img src="https://{{../accountName}}.blob.core.windows.net/{{../containerName}}/{{name}}" width="150" height="150" class="img-rounded"> {{/each}}
+        </li></ul>
+      <div class="caption">
+      </div>
+    </div>
+    </div>
+     <div class="form-group">
+    <button type='button'  class="btn btn-primary btn-lg btn-block" id="saveTemp">Train Template</button>
+  </div>
+</form>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Sno</th>
+        <th>Template Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Doe</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Moe</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Dooley</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const message = document.getElementById('message');
+    const picker = document.getElementById('file-picker');
+
+    document.getElementById('upload-form').addEventListener('submit', (e) => {
+
+      message.innerText = '';
+
+      if(!picker.files.length) {
+        message.innerText = 'Please select an image to upload.';
+        e.preventDefault();
+        return false;
+      }
+    });
+
+  });
+
+
+// Write Javascript code!
+// appDiv.innerHTML = `<h1>JS Starter</h1>`;
+document.getElementById("saveTemp").addEventListener("click", saveTemplate);
+
+var getSucc = function(data) {
+  console.log(data);
+}
+
+function saveTemplate() {
+  $.ajax({
+  type: "POST",
+  url: 'templateSubmit',
+  data: {
+    'tname':document.getElementById("exampleInputEmail1").value
+  },
+  success: getSucc
+});
+}
+
+
+</script>
